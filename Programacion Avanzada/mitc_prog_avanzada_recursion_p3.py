@@ -15,36 +15,22 @@
 #Debido a que 2 es par, el siguiente elemento se obtiene al aplicar la regla 1, lo que genera el número 1. 
 #Debido a que ya llegamos al número 1, hemos terminado de calcular la serie, por lo que regresamos la serie generada: 5, 16, 8, 4, 2, 1.
 
-
-def parimpar(n, d = 2):
-
-    if n == 1:
-        return 1
-    elif n == d:
-        return 1
+def parimpar(n):
+ 
+    if n == 2:
+        n = 1
+        return n
     elif n % 2 == 0:
-        resultado = 1 + parimpar(n - d, d)
+        n = n // 2
+        print(n)
+        return parimpar(n)
     else:
-        resultado = (n * 3) + parimpar((n - n) + 1)
-    return resultado
-    
+        n = (n * 3) + 1
+        print(n)
+        return parimpar(n)
 
-def resultado(n, d = 2):
 
-    lista = [n]
-
-    while n != 1:
-        if n % 2 == 0:
-            operacion = parimpar(n, d)
-            lista.append(operacion)
-            n = operacion
-        else:
-            operacion = parimpar(n, d)
-            lista.append(operacion)
-            n = operacion
-    print(lista)
-        
-    
 if __name__ == '__main__':
-    numero = int(input('Dame un numero positivo: '))
-    resultado(numero)
+    a = int(input('Dame un numero: '))
+    print(a)
+    print(parimpar(a))
